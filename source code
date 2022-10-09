@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+// This little program studies the values of an array with non-specified values and the values of addresses in memory not filled by anything.
+//
+//      The studies are as follows:
+//  0. Creates new memory to be used by malloc()
+//  1. Prints the non-designated value per index numeration. This means that and there is a portion of memory in this array composed of 'garbage' values, i.e. non-specified values per index numeration.
+//  2. Prints the address of this non-designated value per index numeration, including null value.
+//  3. Prints the address per byte of memory created by malloc().
+//  4. Frees the memory created by malloc() at the end of the loop because we are, then, done with our study.
+
+int main(void)
+{
+    int scores[3];
+    int *x = malloc(4 * sizeof(int));
+    for (int i = 0; i < 4; i++)
+    {
+        printf("Iteration %i: %i\n", i, scores[i]);
+        printf("Iteration %i: %p\n", i, &scores[i]);
+        printf("Iteration %i: %p\n", i,  &x);
+    }
+    free(x);
+}
